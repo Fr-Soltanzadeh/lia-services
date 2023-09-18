@@ -37,7 +37,6 @@ async def update_product(product_id: PydanticObjectId, updated_product: UpdatePr
     return product
 
 
-
 @router.delete("/{product_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_product(product_id: PydanticObjectId):
     product = await Product.get(product_id)

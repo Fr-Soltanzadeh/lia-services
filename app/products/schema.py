@@ -16,6 +16,6 @@ class ProductInCreate(BaseModel):
 
 
 class ProductInUpdate(BaseModel):
-    name: Optional[str]=None
-    price: Optional[float]=None
-    description: Optional[str]=None
+    name: Optional[str] = None
+    price: Optional[float] = None
+    description: Optional[str] = None

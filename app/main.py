@@ -1,5 +1,7 @@
 import uvicorn
 
+from config import port, hostname
+
 
 if __name__ == "__main__":
-    uvicorn.run(app="config:app", port=8000, reload=True, host="127.0.0.1")
+    uvicorn.run(app="config:app", port=port, reload=True, host=hostname)

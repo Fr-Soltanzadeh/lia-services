@@ -1,7 +1,7 @@
 import uvicorn
 
-from config import port, hostname
+from config import CONFIG
 
 
 if __name__ == "__main__":
-    uvicorn.run(app="config:app", port=port, reload=True, host=hostname)
+    uvicorn.run(app="app:app", port=CONFIG.port, reload=True, host=CONFIG.hostname)

@@ -1,8 +1,9 @@
-from fastapi import APIRouter, status, HTTPException
 from beanie import PydanticObjectId
-from .schema import Product, UpdateProduct
+from fastapi import APIRouter, status, HTTPException
 from typing import List, Any
+
 from utils import encode_input
+from .schema import Product, ProductInCreate, ProductInUpdate
 
 
 router = APIRouter(prefix="/products", tags=["Products"])
@@ -23,13 +24,14 @@ async def get_product(product_id: PydanticObjectId):
 
 
 @router.post("/", response_model=Product, status_code=status.HTTP_201_CREATED)
-async def create_product(product: Product):
+async def create_product(product: ProductInCreate):
+    product = Product(name=product.name, price=product.price, description=product.description)
     await product.insert()
     return product
 
 
 @router.put("/{product_id}", response_model=Product)
-async def update_product(product_id: PydanticObjectId, updated_product: UpdateProduct):
+async def update_product(product_id: PydanticObjectId, updated_product: ProductInUpdate):
     product = await Product.get(product_id)
     if not product:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Product with id {product_id} not found")

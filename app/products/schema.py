@@ -8,11 +8,17 @@ class Product(Document):
     price: float
     description: str
 
-    class Settings:
+    class DocumentMeta:
         name = "products_collection"
 
 
-class UpdateProduct(BaseModel):
-    name: Optional[str]
-    price: Optional[float]
-    description: Optional[str]
+class ProductInCreate(BaseModel):
+    name: str
+    price: float
+    description: str
+
+
+class ProductInUpdate(BaseModel):
+    name: Optional[str]=None
+    price: Optional[float]=None
+    description: Optional[str]=None

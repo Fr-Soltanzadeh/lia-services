@@ -8,9 +8,6 @@ class Product(Document):
     price: float
     description: str
 
-    class DocumentMeta:
-        name = "products_collection"
-
 
 class ProductInCreate(BaseModel):
     name: str

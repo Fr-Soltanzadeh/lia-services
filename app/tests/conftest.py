@@ -13,18 +13,20 @@ from app import app
 Pytest fixtures
 """
 
-base_url="http://127.0.0.1"
+base_url = "http://127.0.0.1"
 
 
 @pytest.fixture(autouse=True)
 async def get_test_db():
     client = AsyncMongoMockClient()
-    await init_beanie(document_models=[Product], database=client.get_database(name="test_db"))
+    await init_beanie(
+        document_models=[Product], database=client.get_database(name="test_db")
+    )
 
 
 @pytest.fixture(autouse=True)
 def anyio_backend():
-    return 'asyncio'
+    return "asyncio"
 
 
 @pytest.fixture(autouse=True)

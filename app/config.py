@@ -5,6 +5,7 @@ from pydantic import BaseModel
 
 load_dotenv(dotenv_path=".env")
 
+
 class Settings(BaseModel):
     """Server config settings"""
 
@@ -12,5 +13,6 @@ class Settings(BaseModel):
     port: int = int(getenv("port"))
     mongodb_uri: str = getenv("MongoDB_URI")
     db_name: str = getenv("database_name")
+
 
 CONFIG = Settings()

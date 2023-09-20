@@ -12,6 +12,5 @@ class Settings(BaseModel):
     port: int = int(getenv("port"))
     mongodb_uri: str = getenv("MongoDB_URI")
     db_name: str = getenv("database_name")
-    testing: bool = getenv("TESTING", default=False)
 
 CONFIG = Settings()
